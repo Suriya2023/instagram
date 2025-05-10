@@ -56,7 +56,9 @@
                     <span class="font-medium">Home</span>
                 </a>
 
-                <a href="#" class="flex items-center space-x-3 p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800">
+                <a href="#"
+                    onclick="let el = document.getElementById('noneSearch'); el.style.display = el.style.display === 'block' ? 'none' : 'block'"
+                    class="flex items-center space-x-3 p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800">
                     <i class="fas fa-search text-xl"></i>
                     <span class="font-medium">Search</span>
                 </a>
@@ -177,24 +179,135 @@
 
         </div>
 
+        <!-- Search section (positioned at bottom) -->
+        <div id="noneSearch" style="display: none;" class="bg-white w-[20%]">
+            <!-- Search header -->
+            <div class="p-4 font-medium text-base">Search</div>
+
+            <!-- Search input -->
+            <div class="px-4 pb-3">
+                <div class="relative">
+                    <input type="text" placeholder="Search"
+                        class="w-full bg-gray-100 rounded-md py-2 pl-4 pr-10 text-sm focus:outline-none">
+                    <button class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400">
+                        <i class="fas fa-search text-xs"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Recent searches -->
+            <div class="border-t border-gray-200">
+                <div class="flex justify-between items-center px-4 py-3">
+                    <span class="font-medium text-sm">Recent</span>
+                    <button class="text-blue-500 text-xs font-medium">Clear all</button>
+                </div>
+
+                <!-- Recent search items -->
+                <div class="px-2">
+                    <!-- Item 1 -->
+                    <div class="flex items-center justify-between py-2 px-2">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-full overflow-hidden bg-gray-200">
+                                <img src="/api/placeholder/50/50" alt="User" class="w-full h-full object-cover">
+                            </div>
+                            <div class="ml-3">
+                                <div class="text-sm font-semibold">_kem_cho_surat_</div>
+                                <div class="text-xs text-gray-500">kem cho surat</div>
+                            </div>
+                        </div>
+                        <button class="text-gray-400">
+                            <i class="fas fa-times text-xs"></i>
+                        </button>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="flex items-center justify-between py-2 px-2">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-full overflow-hidden bg-gray-200">
+                                <img src="/api/placeholder/50/50" alt="User" class="w-full h-full object-cover">
+                            </div>
+                            <div class="ml-3">
+                                <div class="text-sm font-semibold">kemchosurtis</div>
+                                <div class="text-xs text-gray-500">kem cho surat</div>
+                            </div>
+                        </div>
+                        <button class="text-gray-400">
+                            <i class="fas fa-times text-xs"></i>
+                        </button>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="flex items-center justify-between py-2 px-2">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-full overflow-hidden bg-gray-200">
+                                <img src="/api/placeholder/50/50" alt="User" class="w-full h-full object-cover">
+                            </div>
+                            <div class="ml-3">
+                                <div class="text-sm font-semibold">_ankit_banna_</div>
+                                <div class="text-xs text-gray-500">Aankit • <span class="text-blue-500">Following</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="text-gray-400">
+                            <i class="fas fa-times text-xs"></i>
+                        </button>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="flex items-center justify-between py-2 px-2">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-full overflow-hidden bg-gray-200">
+                                <img src="/api/placeholder/50/50" alt="User" class="w-full h-full object-cover">
+                            </div>
+                            <div class="ml-3">
+                                <div class="text-sm font-semibold">amrolibca</div>
+                                <div class="text-xs text-gray-500">AMROLI BCA</div>
+                            </div>
+                        </div>
+                        <button class="text-gray-400">
+                            <i class="fas fa-times text-xs"></i>
+                        </button>
+                    </div>
+
+                    <!-- Item 5 -->
+                    <div class="flex items-center justify-between py-2 px-2">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-full overflow-hidden bg-gray-200">
+                                <img src="/api/placeholder/50/50" alt="User" class="w-full h-full object-cover">
+                            </div>
+                            <div class="ml-3">
+                                <div class="text-sm font-semibold">amrolicollege.official <i
+                                        class="fas fa-check-circle verified-badge"></i></div>
+                                <div class="text-xs text-gray-500 truncate max-w-xs">Amroli College• by Jiwan
+                                    Jyot Trust • F...</div>
+                            </div>
+                        </div>
+                        <button class="text-gray-400">
+                            <i class="fas fa-times text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Main Content -->
         <div id="mainsidebar" class="flex-1 overflow-y-auto no-scrollbar">
             <div class="max-w-xl mx-auto py-4">
                 <!-- Stories -->
                 <div class="flex space-x-4 px-4 py-4 overflow-x-auto no-scrollbar">
-                    <div class="flex flex-col items-center">
+                    <div class="flex flex-col items-center cursor-pointer">
                         <div
                             class="w-16 h-16 rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-0.5">
                             <div class="bg-white dark:bg-gray-800 rounded-full p-0.5 w-full h-full">
-                                <img src="	https://i.pinimg.com/736x/54/f6/10/54f610fc07356c059939cb91d305d385.jpg"
-                                    alt="vaishu_gor..." class="rounded-full w-full h-full object-cover">
+                                <img src="/images/uploads/<%= user.profileimage %>" alt="<%= user.fullname %>"
+                                    class="rounded-full w-full h-full object-cover">
                             </div>
                         </div>
                         <span class="text-xs mt-1 truncate w-16 text-center">
                             <%= user.fullname %>
                         </span>
                     </div>
-                    <div class="flex flex-col items-center">
+                    <div class="flex flex-col items-center cursor-pointer">
                         <div
                             class="w-16 h-16 rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-0.5">
                             <div class="bg-white dark:bg-gray-800 rounded-full p-0.5 w-full h-full">
@@ -204,7 +317,7 @@
                         </div>
                         <span class="text-xs mt-1 truncate w-16 text-center">prince_akb...</span>
                     </div>
-                    <div class="flex flex-col items-center">
+                    <div class="flex flex-col items-center cursor-pointer">
                         <div
                             class="w-16 h-16 rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-0.5">
                             <div class="bg-white dark:bg-gray-800 rounded-full p-0.5 w-full h-full">
@@ -214,7 +327,7 @@
                         </div>
                         <span class="text-xs mt-1 truncate w-16 text-center">mr.sunill_24</span>
                     </div>
-                    <div class="flex flex-col items-center">
+                    <div class="flex flex-col items-center cursor-pointer">
                         <div
                             class="w-16 h-16 rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-0.5">
                             <div class="bg-white dark:bg-gray-800 rounded-full p-0.5 w-full h-full">
@@ -224,7 +337,7 @@
                         </div>
                         <span class="text-xs mt-1 truncate w-16 text-center">_dhaval_ch...</span>
                     </div>
-                    <div class="flex flex-col items-center">
+                    <div class="flex flex-col items-center cursor-pointer">
                         <div
                             class="w-16 h-16 rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-0.5">
                             <div class="bg-white dark:bg-gray-800 rounded-full p-0.5 w-full h-full">
@@ -234,7 +347,7 @@
                         </div>
                         <span class="text-xs mt-1 truncate w-16 text-center">diraj_sing...</span>
                     </div>
-                    <div class="flex flex-col items-center">
+                    <div class="flex flex-col items-center cursor-pointer">
                         <div
                             class="w-16 h-16 rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-0.5">
                             <div class="bg-white dark:bg-gray-800 rounded-full p-0.5 w-full h-full">
@@ -244,7 +357,7 @@
                         </div>
                         <span class="text-xs mt-1 truncate w-16 text-center">ezexplains</span>
                     </div>
-                    <div class="flex flex-col items-center">
+                    <div class="flex flex-col items-center cursor-pointer">
                         <div
                             class="w-16 h-16 rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-0.5">
                             <div class="bg-white dark:bg-gray-800 rounded-full p-0.5 w-full h-full">
@@ -254,7 +367,7 @@
                         </div>
                         <span class="text-xs mt-1 truncate w-16 text-center">sheryjans_...</span>
                     </div>
-                    <div class="flex flex-col items-center">
+                    <div class="flex flex-col items-center cursor-pointer">
                         <div
                             class="w-16 h-16 rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-0.5">
                             <div class="bg-white dark:bg-gray-800 rounded-full p-0.5 w-full h-full">
@@ -273,12 +386,14 @@
                         <div class="flex items-center space-x-2">
                             <div class="w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 p-0.5">
                                 <div class="bg-white dark:bg-gray-800 rounded-full p-0.5 w-full h-full">
-                                    <img src="https://i.pinimg.com/736x/54/f6/10/54f610fc07356c059939cb91d305d385.jpg "
-                                        alt="vindiesel" class="rounded-full w-full h-full object-cover" />
+                                    <img src="/images/uploads/<%= user.profileimage %>" alt="vindiesel"
+                                        class="rounded-full w-full h-full object-cover" />
                                 </div>
                             </div>
                             <div>
-                                <span class="font-medium text-sm">vindiesel</span>
+                                <span class="font-medium text-sm">
+                                    <%= user.fullname %>
+                                </span>
                                 <span class="text-xs text-gray-500"> • 13h</span>
                             </div>
                         </div>
@@ -450,7 +565,7 @@
                 <!-- Stories Highlights -->
                 <div class="mt-8">
                     <div class="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
-                        <div class="flex flex-col items-center">
+                        <div class="flex flex-col items-center cursor-pointer">
                             <div class="w-16 h-16 rounded-full border border-gray-600 flex items-center justify-center">
                                 <div class="w-14 h-14 rounded-full overflow-hidden">
                                     <img src="/api/placeholder/56/56" alt="Story" class="w-full h-full object-cover" />
@@ -462,7 +577,7 @@
                             </div>
                         </div>
 
-                        <div class="flex flex-col items-center">
+                        <div class="flex flex-col items-center cursor-pointer">
                             <div class="w-16 h-16 rounded-full border border-gray-600 flex items-center justify-center">
                                 <div class="w-14 h-14 rounded-full overflow-hidden">
                                     <img src="/api/placeholder/56/56" alt="Story" class="w-full h-full object-cover" />
@@ -471,7 +586,7 @@
                             <div class="mt-1 text-xs">Hello winter ...</div>
                         </div>
 
-                        <div class="flex flex-col items-center">
+                        <div class="flex flex-col items-center cursor-pointer">
                             <div class="w-16 h-16 rounded-full border border-gray-600 flex items-center justify-center">
                                 <div class="w-14 h-14 rounded-full overflow-hidden">
                                     <img src="/api/placeholder/56/56" alt="Story" class="w-full h-full object-cover" />
@@ -482,7 +597,7 @@
                             </div>
                         </div>
 
-                        <div class="flex flex-col items-center">
+                        <div class="flex flex-col items-center cursor-pointer">
                             <div class="w-16 h-16 rounded-full border border-gray-600 flex items-center justify-center">
                                 <div class="w-14 h-14 rounded-full overflow-hidden">
                                     <img src="/api/placeholder/56/56" alt="Story" class="w-full h-full object-cover" />
@@ -494,7 +609,7 @@
                             </div>
                         </div>
 
-                        <div class="flex flex-col items-center">
+                        <div class="flex flex-col items-center cursor-pointer">
                             <div class="w-16 h-16 rounded-full border border-gray-600 flex items-center justify-center">
                                 <div class="w-14 h-14 rounded-full overflow-hidden">
                                     <img src="/api/placeholder/56/56" alt="Story" class="w-full h-full object-cover" />
@@ -503,7 +618,7 @@
                             <div class="mt-1 text-xs">Surat to Kashi</div>
                         </div>
 
-                        <div class="flex flex-col items-center">
+                        <div class="flex flex-col items-center cursor-pointer">
                             <div class="w-16 h-16 rounded-full border border-gray-600 flex items-center justify-center">
                                 <div class="w-14 h-14 rounded-full overflow-hidden">
                                     <img src="/api/placeholder/56/56" alt="Story" class="w-full h-full object-cover" />
@@ -514,7 +629,7 @@
                             </div>
                         </div>
 
-                        <div class="flex flex-col items-center">
+                        <div class="flex flex-col items-center cursor-pointer">
                             <div class="w-16 h-16 rounded-full border border-gray-600 flex items-center justify-center">
                                 <div class="w-14 h-14 rounded-full overflow-hidden">
                                     <img src="/api/placeholder/56/56" alt="Story" class="w-full h-full object-cover" />
@@ -609,7 +724,7 @@
                     </div>
                 </header>
 
-                <!-- Main Content -->
+                <!-- Edit profile Main Content -->
                 <main class="flex flex-grow overflow-hidden">
                     <!-- Sidebar - Hidden on Mobile -->
                     <aside class="hidden md:block w-[20%] bg-white border-r border-gray-300 overflow-y-auto">
@@ -735,15 +850,16 @@
 
                             <div class="mb-6">
                                 <label class="block font-semibold mb-2">FullName</label>
-                                <input type="text" name="fullname" placeholder="<%= user.fullname %>"
+                                <input type="text" name="1" placeholder="<%= user.fullname %>"
                                     class="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50">
                             </div>
 
                             <!-- Bio -->
                             <div class="mb-6">
                                 <label class="block font-semibold mb-2">Bio</label>
-                                <textarea name="bio" class="w-full px-3 py-2 border border-gray-300 rounded-lg resize-none"
-                                    rows="3" placeholder="🕉️☸️🔱ॐमहाकाल🔱☸️🕉️"><%= user.bio %></textarea>
+                                <textarea name="bio"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg resize-none" rows="3"
+                                    placeholder="🕉️☸️🔱ॐमहाकाल🔱☸️🕉️"><%= user.bio %></textarea>
                                 <div class="flex justify-end">
                                     <span class="text-xs text-gray-500">18 / 150</span>
                                 </div>
@@ -807,6 +923,8 @@
                 </main>
             </div>
         </div>
+
+
 
 
 
