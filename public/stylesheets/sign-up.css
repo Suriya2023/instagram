@@ -1,0 +1,250 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: #fafafa;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.a2-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+}
+
+.a2-signup-box {
+    background-color: #fff;
+    border: 1px solid #dbdbdb;
+    border-radius: 1px;
+    padding: 20px 40px;
+    margin-bottom: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.a2-logo {
+    margin: 22px auto 12px;
+    text-align: center;
+}
+
+.a2-subtitle {
+    color: #8e8e8e;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 20px;
+    margin: 0 40px 20px;
+    text-align: center;
+}
+
+.a2-facebook-button {
+    background-color: #0095f6;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: 600;
+    padding: 7px 16px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
+
+.a2-facebook-button:hover {
+    background-color: #0085e0;
+}
+
+.a2-facebook-icon {
+    margin-right: 8px;
+    color: white;
+}
+
+.a2-divider {
+    display: flex;
+    align-items: center;
+    margin: 10px 0 18px;
+}
+
+.a2-line {
+    flex-grow: 1;
+    height: 1px;
+    background-color: #dbdbdb;
+}
+
+.a2-or {
+    color: #8e8e8e;
+    font-weight: 600;
+    font-size: 13px;
+    margin: 0 18px;
+}
+
+.a2-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.a2-input {
+    padding: 9px 8px;
+    background-color: #fafafa;
+    border: 1px solid #dbdbdb;
+    border-radius: 3px;
+    margin-bottom: 6px;
+    font-size: 12px;
+}
+
+.a2-policy-text {
+    color: #8e8e8e;
+    font-size: 12px;
+    line-height: 16px;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.a2-policy-text a {
+    color: #8e8e8e;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.a2-learn-more {
+    color: #0095f6;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.a2-signup-button {
+    background-color: #0095f6;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: 600;
+    padding: 7px 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.a2-signup-button:hover {
+    background-color: #0085e0;
+}
+
+.a2-login-box {
+    background-color: #fff;
+    border: 1px solid #dbdbdb;
+    border-radius: 1px;
+    padding: 20px;
+    margin-bottom: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.a2-login-text {
+    font-size: 14px;
+}
+
+.a2-login-link {
+    color: #0095f6;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.a2-app-text {
+    color: #262626;
+    font-size: 14px;
+    line-height: 18px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.a2-app-stores {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.a2-app-store {
+    margin: 0 4px;
+    height: 40px;
+}
+
+.a2-footer {
+    text-align: center;
+    padding: 20px 0;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.a2-footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.a2-footer-link {
+    color: #8e8e8e;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.a2-language-select {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.a2-select {
+    border: none;
+    background: transparent;
+    color: #8e8e8e;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.a2-copyright {
+    font-size: 12px;
+    color: #8e8e8e;
+    margin-left: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 450px) {
+
+    .a2-signup-box,
+    .a2-login-box {
+        padding: 20px;
+    }
+
+    .a2-subtitle {
+        margin: 0 10px 20px;
+    }
+
+    .a2-app-stores {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .a2-app-store {
+        margin: 5px 0;
+    }
+
+    .a2-footer-links {
+        gap: 5px;
+    }
+}

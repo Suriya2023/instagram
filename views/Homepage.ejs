@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram UI Clone</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap');
+
+        .font-script {
+            font-family: 'Grand Hotel', cursive;
+        }
+
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 dark:bg-black text-black dark:text-white">
+    <div class="flex h-screen">
+        <!-- Left Sidebar -->
+        <div class="hidden md:flex flex-col w-[18rem] border-r border-gray-300 dark:border-gray-800 p-4">
+            <div onclick="window.location.href='/Homepage'" class=" cursor-pointer  py-4">
+                <h1 class="text-[3vmin]  font-script">Instagram</h1>
+            </div>
+
+            <nav class="flex flex-col space-y-4 mt-6">
+                <a href="#" onclick="
+                const main1 = document.querySelector('#mainsidebar');
+                const main2 = document.querySelector('#mainsidebar2');
+                const modal1 = document.querySelector('#none1');
+            
+                // Hide profile
+                modal1.style.display = 'none';
+            
+                // Show both sidebars
+                main1.style.display = '';
+                main2.style.display = '';
+            " class="flex items-center space-x-3 p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="fas fa-home text-xl"></i>
+                    <span class="font-medium">Home</span>
+                </a>
+
+                <a href="#" class="flex items-center space-x-3 p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="fas fa-search text-xl"></i>
+                    <span class="font-medium">Search</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="far fa-compass text-xl"></i>
+                    <span class="font-medium">Explore</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="fas fa-film text-xl"></i>
+                    <span class="font-medium">Reels</span>
+                </a>
+                <a href="#"
+                    class="flex items-center space-x-3 p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 relative">
+                    <i class="far fa-comment text-xl"></i>
+                    <span class="font-medium">Messages</span>
+                    <span
+                        class="absolute top-1 left-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                        9+
+                    </span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="far fa-heart text-xl"></i>
+                    <span class="font-medium">Notifications</span>
+                </a>
+                <a onclick="
+                const modal = document.querySelector('#none');
+                modal.style.display = (modal.style.display === 'none' || modal.style.display === '') ? 'block' : 'none';
+            " class="flex items-center space-x-3 p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="far fa-plus-square text-xl"></i>
+                    <span class="font-medium">Create</span>
+                </a>
+
+
+                <a onclick="
+    const main1 = document.querySelector('#mainsidebar');
+    const main2 = document.querySelector('#mainsidebar2');
+    const modal1 = document.querySelector('#none1');
+    const modal2 = document.querySelector('#noneedit'); // Yeh naya element hai
+
+    if (modal1.style.display === 'none' || modal1.style.display === '') {
+        // Show Profile
+        modal1.style.display = 'block';
+        if (modal2) modal2.style.display = 'none'; // Yeh line add ki gayi hai
+
+        // Hide sidebars
+        main1.style.display = 'none';
+        main2.style.display = 'none';
+    } else {
+        // Hide Profile
+        modal1.style.display = 'none';
+
+        // Show sidebars
+        main1.style.display = '';
+        main2.style.display = '';
+    }
+" class="flex cursor-pointer items-center space-x-3 p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <i class="far fa-user text-xl"></i>
+                    <span class="font-medium">Profile</span>
+                </a>
+
+
+
+            </nav>
+            <div class="mt-auto">
+                <div class="mb-6 space-y-2">
+                    <a href="#" class="flex items-center py-3 px-3 rounded-md hover:bg-ig-btn-hover">
+                        <i class="fa-solid fa-circle-nodes w-6 text-lg"></i>
+                        <span class="ml-4">Meta AI</span>
+                    </a>
+                    <a href="#" class="flex items-center py-3 px-3 rounded-md hover:bg-ig-btn-hover">
+                        <i class="fa-solid fa-comment-dots w-6 text-lg"></i>
+                        <span class="ml-4">Threads</span>
+                    </a>
+
+                    <div class="relative">
+                        <a href="#" id="menuButton"
+                            class="flex items-center py-3 px-3 rounded-md hover:bg-ig-btn-hover">
+                            <i class="fa-solid fa-bars w-6 text-lg"></i>
+                            <span class="ml-4">More</span>
+                        </a>
+                        <div id="dropdownMenu"
+                            class="hidden absolute right-0 mb-2 w-56 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg overflow-hidden z-50"
+                            style="margin-top:-750px; margin-left: 2rem;right: -9px; box-shadow: -6px 2px 12px 6px #9f918f;">
+                            <a href="#"
+                                class="flex items-center gap-2 px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-800 transition">
+                                <span class="material-icons">settings</span> Settings
+                            </a>
+                            <a href="#"
+                                class="flex items-center gap-2 px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-800 transition">
+                                <span class="material-icons">history</span> Your activity
+                            </a>
+                            <a href="#"
+                                class="flex items-center gap-2 px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-800 transition">
+                                <span class="material-icons">bookmark</span> Saved
+                            </a>
+                            <button id="toggleTheme"
+                                class="w-full flex items-center gap-2 px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-800 transition">
+                                <span class="material-icons">brightness_6</span> Switch appearance
+                            </button>
+                            <a href="#"
+                                class="flex items-center gap-2 px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-800 transition">
+                                <span class="material-icons">bug_report</span> Report a problem
+                            </a>
+                            <hr class="border-gray-200 dark:border-gray-700">
+                            <button onclick="switchAccount()"
+                                class="w-full text-left px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-800 transition">
+                                Switch accounts
+                            </button>
+                            <button onclick="window.location.href='/logout'"
+                                class="w-full text-left px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-800 transition">
+                                Log out
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Main Content -->
+        <div id="mainsidebar" class="flex-1 overflow-y-auto no-scrollbar">
+            <div class="max-w-xl mx-auto py-4">
+                <!-- Stories -->
+                <div class="flex space-x-4 px-4 py-4 overflow-x-auto no-scrollbar">
+                    <div class="flex flex-col items-center">
+                        <div
+                            class="w-16 h-16 rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-0.5">
+                            <div class="bg-white dark:bg-gray-800 rounded-full p-0.5 w-full h-full">
+                                <img src="	https://i.pinimg.com/736x/54/f6/10/54f610fc07356c059939cb91d305d385.jpg"
+                                    alt="vaishu_gor..." class="rounded-full w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <span class="text-xs mt-1 truncate w-16 text-center">
+                            <%= user.fullname %>
+                        </span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div
+                            class="w-16 h-16 rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-0.5">
+                            <div class="bg-white dark:bg-gray-800 rounded-full p-0.5 w-full h-full">
+                                <img src="/api/placeholder/40/40" alt="prince_akb..."
+                                    class="rounded-full w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <span class="text-xs mt-1 truncate w-16 text-center">prince_akb...</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div
+                            class="w-16 h-16 rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-0.5">
+                            <div class="bg-white dark:bg-gray-800 rounded-full p-0.5 w-full h-full">
+                                <img src="/api/placeholder/40/40" alt="mr.sunill_24"
+                                    class="rounded-full w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <span class="text-xs mt-1 truncate w-16 text-center">mr.sunill_24</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div
+                            class="w-16 h-16 rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-0.5">
+                            <div class="bg-white dark:bg-gray-800 rounded-full p-0.5 w-full h-full">
+                                <img src="/api/placeholder/40/40" alt="_dhaval_ch..."
+                                    class="rounded-full w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <span class="text-xs mt-1 truncate w-16 text-center">_dhaval_ch...</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div
+                            class="w-16 h-16 rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-0.5">
+                            <div class="bg-white dark:bg-gray-800 rounded-full p-0.5 w-full h-full">
+                                <img src="/api/placeholder/40/40" alt="diraj_sing..."
+                                    class="rounded-full w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <span class="text-xs mt-1 truncate w-16 text-center">diraj_sing...</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div
+                            class="w-16 h-16 rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-0.5">
+                            <div class="bg-white dark:bg-gray-800 rounded-full p-0.5 w-full h-full">
+                                <img src="/api/placeholder/40/40" alt="ezexplains"
+                                    class="rounded-full w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <span class="text-xs mt-1 truncate w-16 text-center">ezexplains</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div
+                            class="w-16 h-16 rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-0.5">
+                            <div class="bg-white dark:bg-gray-800 rounded-full p-0.5 w-full h-full">
+                                <img src="/api/placeholder/40/40" alt="sheryjans_..."
+                                    class="rounded-full w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <span class="text-xs mt-1 truncate w-16 text-center">sheryjans_...</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div
+                            class="w-16 h-16 rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-0.5">
+                            <div class="bg-white dark:bg-gray-800 rounded-full p-0.5 w-full h-full">
+                                <img src="/api/placeholder/40/40" alt="nabaa.nah..."
+                                    class="rounded-full w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <span class="text-xs mt-1 truncate w-16 text-center">nabaa.nah...</span>
+                    </div>
+                </div>
+
+                <!-- Posts -->
+                <div class="border border-gray-300 dark:border-gray-800 rounded-md mb-6 bg-white dark:bg-black">
+                    <!-- Post Header -->
+                    <div class="flex items-center justify-between p-3">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 p-0.5">
+                                <div class="bg-white dark:bg-gray-800 rounded-full p-0.5 w-full h-full">
+                                    <img src="https://i.pinimg.com/736x/54/f6/10/54f610fc07356c059939cb91d305d385.jpg "
+                                        alt="vindiesel" class="rounded-full w-full h-full object-cover" />
+                                </div>
+                            </div>
+                            <div>
+                                <span class="font-medium text-sm">vindiesel</span>
+                                <span class="text-xs text-gray-500"> • 13h</span>
+                            </div>
+                        </div>
+                        <button class="text-gray-700 dark:text-gray-300">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </button>
+                    </div>
+
+                    <!-- Post Image -->
+                    <div class="relative">
+                        <img src="https://i.pinimg.com/736x/54/f6/10/54f610fc07356c059939cb91d305d385.jpg" alt="Post"
+                            class="w-full">
+                        <div class="absolute bottom-4 left-4 bg-gray-800 bg-opacity-60 p-1 rounded-full">
+                            <i class="fas fa-tag text-white"></i>
+                        </div>
+                    </div>
+
+                    <!-- Post Actions -->
+                    <div class="p-3">
+                        <div class="flex justify-between">
+                            <div class="flex space-x-4">
+                                <button id="likeBtn" class="focus:outline-none">
+                                    <i class="far fa-heart text-2xl"></i>
+                                </button>
+                                <button class="focus:outline-none">
+                                    <i class="far fa-comment text-2xl"></i>
+                                </button>
+                                <button class="focus:outline-none">
+                                    <i class="far fa-paper-plane text-2xl"></i>
+                                </button>
+                            </div>
+                            <button class="focus:outline-none">
+                                <i class="far fa-bookmark text-2xl"></i>
+                            </button>
+                        </div>
+                        <div class="mt-2">
+                            <p class="font-medium text-sm">1,212,996 likes</p>
+                            <p class="text-sm mt-1">
+                                <span class="font-medium">vindiesel</span> Life of a Toretto...
+                            </p>
+                            <p class="text-sm text-gray-500 mt-1">View all 4,206 comments</p>
+                            <div class="flex items-center mt-2">
+                                <input type="text" placeholder="Add a comment..."
+                                    class="text-sm flex-1 focus:outline-none bg-transparent">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Audio Post Preview -->
+                <div class="border border-gray-300 dark:border-gray-800 rounded-md mb-6 bg-white dark:bg-black">
+                    <div class="flex items-center justify-between p-3">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-8 rounded-full">
+                                <img src="/api/placeholder/30/30" alt="mr.highthink"
+                                    class="rounded-full w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <span class="font-medium text-sm">mr.highthink</span>
+                                <span class="text-xs text-gray-500"> • 1h</span>
+                                <div class="text-xs text-gray-500">Original audio</div>
+                            </div>
+                        </div>
+                        <button class="text-gray-700 dark:text-gray-300">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Create Post Modal -->
+        <div id="none" style="display: none;">
+            <div class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+                <div class="bg-gray-800 rounded-xl w-full max-w-2xl overflow-hidden">
+                    <!-- Modal Header -->
+                    <div class="flex items-center justify-between border-b border-gray-700 p-3">
+                        <button onclick="document.getElementById('none').style.display = 'none'"
+                            class="text-gray-400 hover:text-white">
+                            <i class="fas fa-times text-xl"></i>
+                        </button>
+                        <h3 class="text-white font-semibold">Create new post</h3>
+                        <div class="w-5"></div> <!-- Spacer for center alignment -->
+                    </div>
+
+                    <!-- Modal Content -->
+                    <div class="p-6 flex flex-col items-center justify-center h-96 text-center">
+                        <div class="mb-6">
+                            <div class="inline-flex p-5 border-2 border-gray-500 rounded-full">
+                                <div class="flex items-center">
+                                    <i class="far fa-image text-3xl mr-2"></i>
+                                    <i class="fas fa-play text-3xl"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-xl mb-8">Drag photos and videos here</p>
+                        <button class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg">
+                            Select from computer
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- profile Content -->
+        <div id="none1" style="display: none;width: 50%;" class="container mx-auto px-4 py-6">
+            <!-- Profile Header -->
+
+            <div class="">
+                <div class="flex flex-col md:flex-row gap-8 items-center md:items-start">
+                    <!-- Profile Picture -->
+                    <div class="relative">
+                        <div class="w-24 md:w-36 h-24 md:h-36 rounded-full overflow-hidden border-2 border-gray-800">
+                            <img src="/images/uploads/<%= user.profileimage %>" alt="Profile"
+                                class="w-full h-full object-cover" />
+                        </div>
+                        <div class="absolute -top-2 -right-2">
+                            <button class="bg-white-700 border border-black shadow-lg z-50 text-xs rounded px-2 py-1">
+                                Note <i class="fa-solid fa-caret-down ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Profile Info -->
+                    <div class="flex-1">
+                        <div class="flex flex-col md:flex-row items-center md:items-start gap-4">
+                            <h2 class="text-xl">
+                                <%= user.fullname %>
+                            </h2>
+
+                            <div class="flex gap-2">
+                                <button id="toggleButton"
+                                    class="bg-white-800 border border-black text-sm px-4 py-1.5 rounded font-medium hover:bg-gray-700">Edit
+                                    profile</button>
+                                <button
+                                    class="bg-white-800 border border-black text-sm px-4 py-1.5 rounded font-medium hover:bg-gray-700">View
+                                    archive</button>
+                                <button class="p-2 text-lg"><i class="fa-solid fa-gear"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- Stats -->
+                        <div class="flex justify-center md:justify-start gap-6 my-4">
+                            <div><span class="font-semibold">1</span> post</div>
+                            <div><span class="font-semibold">1m</span> followers</div>
+                            <div><span class="font-semibold">0</span> following</div>
+                        </div>
+
+                        <!-- Bio -->
+                        <div class="text-center md:text-left space-y-1">
+                            <div class="flex items-center justify-center md:justify-start gap-1">
+                                <span>🌟</span>
+                                <span>ℰ𝓊𝓇ℯ𝓀𝒶</span>
+                            </div>
+                            <div class="flex items-center justify-center md:justify-start gap-1">
+                                <i class="fa-solid fa-circle-info"></i>
+                                <span class="text-gray-400">
+                                    <%= user.username %>
+                                </span>
+                            </div>
+                            <div class="text-center md:text-left">
+                                <span>≪↫⚘⚣ℑ𝔫𝔡𝔦𝔞𝔫↬⚘≫<%= user.bio %></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stories Highlights -->
+                <div class="mt-8">
+                    <div class="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
+                        <div class="flex flex-col items-center">
+                            <div class="w-16 h-16 rounded-full border border-gray-600 flex items-center justify-center">
+                                <div class="w-14 h-14 rounded-full overflow-hidden">
+                                    <img src="/api/placeholder/56/56" alt="Story" class="w-full h-full object-cover" />
+                                </div>
+                            </div>
+                            <div class="mt-1 text-xs flex gap-1 justify-center items-center">
+                                <i class="fa-solid fa-heart text-xs"></i>
+                                <i class="fa-solid fa-fire text-xs"></i>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col items-center">
+                            <div class="w-16 h-16 rounded-full border border-gray-600 flex items-center justify-center">
+                                <div class="w-14 h-14 rounded-full overflow-hidden">
+                                    <img src="/api/placeholder/56/56" alt="Story" class="w-full h-full object-cover" />
+                                </div>
+                            </div>
+                            <div class="mt-1 text-xs">Hello winter ...</div>
+                        </div>
+
+                        <div class="flex flex-col items-center">
+                            <div class="w-16 h-16 rounded-full border border-gray-600 flex items-center justify-center">
+                                <div class="w-14 h-14 rounded-full overflow-hidden">
+                                    <img src="/api/placeholder/56/56" alt="Story" class="w-full h-full object-cover" />
+                                </div>
+                            </div>
+                            <div class="mt-1 text-xs">
+                                <i class="fa-solid fa-circle text-orange-500 text-xs"></i>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col items-center">
+                            <div class="w-16 h-16 rounded-full border border-gray-600 flex items-center justify-center">
+                                <div class="w-14 h-14 rounded-full overflow-hidden">
+                                    <img src="/api/placeholder/56/56" alt="Story" class="w-full h-full object-cover" />
+                                </div>
+                            </div>
+                            <div class="mt-1 text-xs flex gap-1 justify-center items-center">
+                                <i class="fa-solid fa-face-smile text-orange-500 text-xs"></i>
+                                <i class="fa-solid fa-star text-yellow-500 text-xs"></i>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col items-center">
+                            <div class="w-16 h-16 rounded-full border border-gray-600 flex items-center justify-center">
+                                <div class="w-14 h-14 rounded-full overflow-hidden">
+                                    <img src="/api/placeholder/56/56" alt="Story" class="w-full h-full object-cover" />
+                                </div>
+                            </div>
+                            <div class="mt-1 text-xs">Surat to Kashi</div>
+                        </div>
+
+                        <div class="flex flex-col items-center">
+                            <div class="w-16 h-16 rounded-full border border-gray-600 flex items-center justify-center">
+                                <div class="w-14 h-14 rounded-full overflow-hidden">
+                                    <img src="/api/placeholder/56/56" alt="Story" class="w-full h-full object-cover" />
+                                </div>
+                            </div>
+                            <div class="mt-1 text-xs">
+                                Bappa <i class="fa-solid fa-heart text-red-500 text-xs"></i>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col items-center">
+                            <div class="w-16 h-16 rounded-full border border-gray-600 flex items-center justify-center">
+                                <div class="w-14 h-14 rounded-full overflow-hidden">
+                                    <img src="/api/placeholder/56/56" alt="Story" class="w-full h-full object-cover" />
+                                </div>
+                            </div>
+                            <div class="mt-1 text-xs flex gap-1 justify-center items-center">
+                                <i class="fa-solid fa-heart text-red-500 text-xs"></i>
+                                <i class="fa-solid fa-fire text-orange-500 text-xs"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab Navigation -->
+                <div class="border-t border-ig-border mt-6">
+                    <div class="flex justify-center">
+                        <button class="border-t border-white py-3 px-4 flex items-center gap-1 text-sm font-semibold">
+                            <i class="fa-solid fa-table-cells"></i> POSTS
+                        </button>
+                        <button class="py-3 px-4 flex items-center gap-1 text-sm font-semibold text-gray-400">
+                            <i class="fa-regular fa-bookmark"></i> SAVED
+                        </button>
+                        <button class="py-3 px-4 flex items-center gap-1 text-sm font-semibold text-gray-400">
+                            <i class="fa-solid fa-tag"></i> TAGGED
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Post Grid -->
+                <div class="mt-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-1">
+                        <div class="aspect-square">
+                            <img src="https://i.pinimg.com/736x/eb/6c/69/eb6c69f837de193bb83cd8625e3f4baa.jpg"
+                                alt="Post" class="w-full h-full object-cover" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <footer class="mt-12 pt-8 pb-4 text-center text-xs text-gray-500">
+                    <div class="flex flex-wrap justify-center gap-x-4 gap-y-2 mb-4">
+                        <a href="#" class="hover:underline">Meta</a>
+                        <a href="#" class="hover:underline">About</a>
+                        <a href="#" class="hover:underline">Blog</a>
+                        <a href="#" class="hover:underline">Jobs</a>
+                        <a href="#" class="hover:underline">Help</a>
+                        <a href="#" class="hover:underline">API</a>
+                        <a href="#" class="hover:underline">Privacy</a>
+                        <a href="#" class="hover:underline">Terms</a>
+                        <a href="#" class="hover:underline">Locations</a>
+                        <a href="#" class="hover:underline">Instagram Lite</a>
+                        <a href="#" class="hover:underline">Threads</a>
+                        <a href="#" class="hover:underline">Contact Uploading & Non-Users</a>
+                        <a href="#" class="hover:underline">Meta Verified</a>
+                    </div>
+                    <div class="flex items-center justify-center gap-2">
+                        <select class="bg-transparent border-none text-gray-500 text-xs">
+                            <option>English</option>
+                        </select>
+                        <span>© 2025 Instagram from Meta</span>
+                    </div>
+                </footer>
+            </div>
+
+
+
+        </div>
+
+        <!-- eddit profile -->
+        <div id="noneedit" style="display: none;width:100%; ">
+            <div class="flex  bg-gray-50 flex-col w-full h-screen">
+                <!-- Top Navigation Bar -->
+                <header class="bg-white border-b border-gray-300 sticky top-0 z-50">
+                    <div class="flex items-center justify-between p-3 max-w-screen-xl mx-auto">
+                        <div class="flex items-center">
+                            <button class="mr-4 md:hidden">
+                                <i class="fas fa-arrow-left text-black"></i>
+                            </button>
+                            <span style=" text-align: center;  width: 61%;" class=" instagram-font">Instagram</span>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="relative hidden md:block">
+                                <input type="text" placeholder="Search" class="bg-gray-100 px-4 py-1 rounded-lg w-64">
+                            </div>
+                            <div class="flex space-x-4">
+                                <button><i class="fas fa-home text-lg"></i></button>
+                                <button><i class="fas fa-compass text-lg"></i></button>
+                                <button><i class="fas fa-bell text-lg"></i></button>
+                                <button><i class="fas fa-user-circle text-lg"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Main Content -->
+                <main class="flex flex-grow overflow-hidden">
+                    <!-- Sidebar - Hidden on Mobile -->
+                    <aside class="hidden md:block w-[20%] bg-white border-r border-gray-300 overflow-y-auto">
+                        <div class="p-4">
+                            <h2 class="text-lg font-bold mb-6">Settings</h2>
+
+                            <div class="mb-8">
+                                <div class="flex items-center mb-2">
+                                    <img src="https://cdn.cdnlogo.com/logos/m/82/meta.svg" alt="Meta Logo"
+                                        class="h-6 mr-2">
+                                    <span class="font-semibold">Meta</span>
+                                </div>
+                                <h3 class="font-bold mb-1">Accounts Center</h3>
+                                <p class="text-xs text-gray-500 mb-2">Manage your connected experiences and account
+                                    settings
+                                    across Meta technologies.</p>
+
+                                <ul class="space-y-3 mb-4">
+                                    <li class="flex items-center">
+                                        <i class="far fa-user mr-3 text-gray-500"></i>
+                                        <span>Personal details</span>
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-lock mr-3 text-gray-500"></i>
+                                        <span>Password and security</span>
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="far fa-newspaper mr-3 text-gray-500"></i>
+                                        <span>Ad preferences</span>
+                                    </li>
+                                </ul>
+
+                                <a href="#" class="text-blue-500 text-sm">See more in Accounts Center</a>
+                            </div>
+
+                            <div>
+                                <h3 class="font-semibold mb-4">How you use Instagram</h3>
+
+                                <ul class="space-y-4">
+                                    <li class="flex items-center bg-gray-100 px-3 py-2 rounded-md">
+                                        <i class="far fa-user-circle mr-3"></i>
+                                        <span>Edit profile</span>
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="far fa-bell mr-3"></i>
+                                        <span>Notifications</span>
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="far fa-eye mr-3"></i>
+                                        <span>Who can see your content</span>
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-lock mr-3"></i>
+                                        <span>Account privacy</span>
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-star mr-3"></i>
+                                        <span>Close Friends</span>
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-ban mr-3"></i>
+                                        <span>Blocked</span>
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="far fa-eye-slash mr-3"></i>
+                                        <span>Hide story and live</span>
+                                    </li>
+                                </ul>
+
+                                <h3 class="font-semibold mt-8 mb-4">How others can interact with you</h3>
+
+                                <ul class="space-y-4">
+                                    <li class="flex items-center">
+                                        <i class="far fa-comment mr-3"></i>
+                                        <span>Messages and story replies</span>
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-at mr-3"></i>
+                                        <span>Tags and mentions</span>
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="far fa-comment-dots mr-3"></i>
+                                        <span>Comments</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </aside>
+
+                    <!-- Main Content Area -->
+                    <div class="flex-grow overflow-y-auto p-4 md:p-8">
+                        <h1 class="text-xl font-bold mb-6">Edit profile</h1>
+
+                        <form action="/edit" method="post" enctype="multipart/form-data" class="max-w-lg mx-auto">
+                            <!-- Profile Photo -->
+                            <div class="mb-8 flex items-center">
+                                <div class="mr-6">
+                                    <img src="/images/uploads/<%= user.profileimage %>" id="profileimage" alt="Profile"
+                                        class="rounded-full w-16 h-16">
+                                </div>
+
+                                <div>
+                                    <h3 class="font-semibold">
+                                        <%= user.username %>
+                                    </h3>
+                                    <p class="text-sm text-gray-500">🇮🇳 • India</p>
+
+                                    <!-- Hidden file input -->
+                                    <input type="file" id="image" name="post" accept="image/*" class="hidden">
+                                    <button type="button" class="text-blue-500 font-semibold text-sm mt-1"
+                                        onclick="document.getElementById('image').click()">
+                                        Change photo
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Username and FullName -->
+                            <div class="mb-6">
+                                <label class="block font-semibold mb-2">Username</label>
+                                <input type="text" name="username" placeholder="<%= user.username %>"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50">
+                            </div>
+
+                            <div class="mb-6">
+                                <label class="block font-semibold mb-2">FullName</label>
+                                <input type="text" name="fullname" placeholder="<%= user.fullname %>"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50">
+                            </div>
+
+                            <!-- Bio -->
+                            <div class="mb-6">
+                                <label class="block font-semibold mb-2">Bio</label>
+                                <textarea name="bio" class="w-full px-3 py-2 border border-gray-300 rounded-lg resize-none"
+                                    rows="3" placeholder="🕉️☸️🔱ॐमहाकाल🔱☸️🕉️"><%= user.bio %></textarea>
+                                <div class="flex justify-end">
+                                    <span class="text-xs text-gray-500">18 / 150</span>
+                                </div>
+                            </div>
+
+                            <!-- Show Threads Badge -->
+                            <div class="mb-6">
+                                <label class="block font-semibold mb-2">Show Threads badge</label>
+                                <div class="flex items-center justify-between p-3 border border-gray-300 rounded-lg">
+                                    <span>Show Threads badge</span>
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input type="checkbox" class="sr-only peer">
+                                        <div
+                                            class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-500">
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Gender -->
+                            <div class="mb-6">
+                                <label class="block font-semibold mb-2">Gender</label>
+                                <div class="relative">
+                                    <select
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white appearance-none">
+                                        <option>Male</option>
+                                        <option>Female</option>
+                                        <option>Custom</option>
+                                        <option>Prefer not to say</option>
+                                    </select>
+                                    <div
+                                        class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+                                <p class="text-xs text-gray-500 mt-1">This won't be part of your public profile.</p>
+                            </div>
+
+                            <!-- Show Account Suggestions -->
+                            <div class="mb-6">
+                                <label class="block font-semibold mb-2">Show account suggestions on profiles</label>
+                                <div class="flex items-center justify-between p-3 border border-gray-300 rounded-lg">
+                                    <span>Show account suggestions on profiles</span>
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input type="checkbox" checked class="sr-only peer">
+                                        <div
+                                            class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-500">
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Submit Buttons -->
+                            <div class="flex justify-end space-x-3 mt-8">
+                                <button type="button" class="px-4 py-2 text-blue-500 font-semibold">Cancel</button>
+                                <button type="submit"
+                                    class="px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+
+
+        <!--  Right Sidebar - Suggestions -->
+        <div id="mainsidebar2" class="hidden  lg:block w-72 p-4 border-l border-gray-300 dark:border-gray-800">
+            <div onclick="const main1 = document.querySelector('#mainsidebar');
+                const main2 = document.querySelector('#mainsidebar2');
+                const modal1 = document.querySelector('#none1');
+            
+                if (modal1.style.display === 'none' || modal1.style.display === '') {
+                    // Show Profile
+                    modal1.style.display = 'block';
+            
+                    // Hide sidebars
+                    main1.style.display = 'none';
+                    main2.style.display = 'none';
+                } else {
+                    // Hide Profile
+                    modal1.style.display = 'none';
+            
+                    // Show sidebars
+                    main1.style.display = '';
+                    main2.style.display = '';
+                }" class="flex cursor-pointer items-center justify-between mb-4">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 overflow-hidden rounded-full object-conaiter border border-gray-300">
+                        <img src="/images/uploads/<%= user.profileimage %>" alt="profile" class="rounded-full">
+                    </div>
+                    <div>
+                        <p class="font-medium text-sm">
+                            <%= user.fullname %>
+                        </p>
+                        <p class="text-gray-500 text-xs">
+                            <%= user.username %>
+                        </p>
+                    </div>
+                </div>
+                <button class="text-blue-500 text-xs font-medium">Switch</button>
+            </div>
+
+            <div class="flex justify-between items-center mb-4">
+                <span class="text-gray-500 font-medium text-sm">Suggested for you</span>
+                <a href="#" class="text-xs font-medium">See All</a>
+            </div>
+
+            <div class="flex items-center cursor-pointer justify-between mb-3">
+                <div class="flex items-center cursor-pointer space-x-3">
+                    <div class="w-8 h-8 rounded-full">
+                        <img src="/api/placeholder/32/32" alt="parthunleashed" class="rounded-full">
+                    </div>
+                    <div>
+                        <p class="text-sm font-medium">parthunleashed</p>
+                        <p class="text-gray-500 text-xs">Followed by mr.sunill_24</p>
+                    </div>
+                </div>
+                <button class="text-blue-500 text-xs font-medium">Follow</button>
+            </div>
+
+            <div class="flex items-center cursor-pointer justify-between mb-3">
+                <div class="flex items-center cursor-pointer space-x-3">
+                    <div class="w-8 h-8 rounded-full">
+                        <img src="/api/placeholder/32/32" alt="_rishikesh_singh07" class="rounded-full">
+                    </div>
+                    <div>
+                        <p class="text-sm font-medium">_rishikesh_singh07</p>
+                        <p class="text-gray-500 text-xs">Followed by royal_thakur_up_66</p>
+                    </div>
+                </div>
+                <button class="text-blue-500 text-xs font-medium">Follow</button>
+            </div>
+
+            <div class="flex items-center cursor-pointer justify-between mb-3">
+                <div class="flex items-center cursor-pointer space-x-3">
+                    <div class="w-8 h-8 rounded-full">
+                        <img src="/api/placeholder/32/32" alt="_punam_2024" class="rounded-full">
+                    </div>
+                    <div>
+                        <p class="text-sm font-medium">_punam_2024</p>
+                        <p class="text-gray-500 text-xs">Suggested for you</p>
+                    </div>
+                </div>
+                <button class="text-blue-500 text-xs font-medium">Follow</button>
+            </div>
+
+            <div class="flex items-center cursor-pointer justify-between mb-3">
+                <div class="flex items-center cursor-pointer space-x-3">
+                    <div class="w-8 h-8 rounded-full">
+                        <img src="/api/placeholder/32/32" alt="anmol_mh_01" class="rounded-full">
+                    </div>
+                    <div>
+                        <p class="text-sm font-medium">anmol_mh_01</p>
+                        <p class="text-gray-500 text-xs">Followed by _dhaval_chauhan_0...</p>
+                    </div>
+                </div>
+                <button class="text-blue-500 text-xs font-medium">Follow</button>
+            </div>
+
+            <div class="flex items-center cursor-pointer justify-between mb-3">
+                <div class="flex items-center cursor-pointer space-x-3">
+                    <div class="w-8 h-8 rounded-full">
+                        <img src="/api/placeholder/32/32" alt="roshan.moradiya" class="rounded-full">
+                    </div>
+                    <div>
+                        <p class="text-sm font-medium">roshan.moradiya</p>
+                        <p class="text-gray-500 text-xs">Followed by mr.sunill_24</p>
+                    </div>
+                </div>
+                <button class="text-blue-500 text-xs font-medium">Follow</button>
+            </div>
+
+            <div class="mt-6">
+                <div class="flex flex-wrap text-xs text-gray-500 gap-2">
+                    <a href="#" class="hover:underline">About</a>•
+                    <a href="#" class="hover:underline">Help</a>•
+                    <a href="#" class="hover:underline">Press</a>•
+                    <a href="#" class="hover:underline">API</a>•
+                    <a href="#" class="hover:underline">Jobs</a>•
+                    <a href="#" class="hover:underline">Privacy</a>•
+                    <a href="#" class="hover:underline">Terms</a>•
+                    <a href="#" class="hover:underline">Locations</a>•
+                    <a href="#" class="hover:underline">Language</a>•
+                    <a href="#" class="hover:underline">Meta Verified</a>
+                </div>
+
+                <p class="text-xs text-gray-500 mt-4">© 2025 INSTAGRAM FROM META</p>
+            </div>
+        </div>
+
+
+        <!-- Mobile Bottom Navigation -->
+        <div
+            class="md:hidden fixed bottom-0 left-0 right-0 flex justify-around items-center border-t border-gray-300 bg-white dark:bg-black dark:border-gray-800 p-3">
+            <a href="#">
+                <i class="fas fa-home text-xl"></i>
+            </a>
+            <a href="#">
+                <i class="fas fa-search text-xl"></i>
+            </a>
+            <a href="#">
+                <i class="far fa-plus-square text-xl"></i>
+            </a>
+            <a href="#">
+                <i class="fas fa-film text-xl"></i>
+            </a>
+            <a href="#">
+                <i class="far fa-user text-xl"></i>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Simple like button functionality
+        document.getElementById('likeBtn').addEventListener('click', function () {
+            const icon = this.querySelector('i');
+            if (icon.classList.contains('far')) {
+                icon.classList.remove('far');
+                icon.classList.add('fas');
+                icon.classList.add('text-red-500');
+            } else {
+                icon.classList.remove('fas');
+                icon.classList.remove('text-red-500');
+                icon.classList.add('far');
+            }
+        });
+
+        const menuButton = document.getElementById('menuButton');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+
+        // Toggle dropdown menu and adjust its position above the menu button
+        menuButton.addEventListener('click', () => {
+            dropdownMenu.classList.toggle('hidden');
+
+            // Get the position of the "More" button
+            const menuButtonPosition = menuButton.getBoundingClientRect();
+
+            // Adjust dropdown position to appear above the "More" button
+            if (!dropdownMenu.classList.contains('hidden')) {
+                dropdownMenu.style.top = `${menuButtonPosition.top - dropdownMenu.offsetHeight - 5}px`; // 5px for spacing
+            }
+        });
+    </script>
+    <script>
+        document.getElementById('toggleButton').addEventListener('click', function () {
+            document.getElementById('noneedit').style.display = 'block';
+            document.getElementById('none1').style.display = 'none';
+        });
+    </script>
+
+    <script>
+        document.getElementById('image').addEventListener('change', function (event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('profileimage').src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+
+</body>
+
+</html>

