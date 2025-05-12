@@ -1,28 +1,25 @@
-let mongoose = require('mongodb')
+let mongoose = require('mongoose');
 
-let postSchema = new mongoose.schema({
-
+let postSchema = new mongoose.Schema({
     user: {
-        type: mongoose.schema.Types.objectId,
-        ref: 'user'
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'user'  // This should refer to your User model
     },
     image: String,
     posttitel: String,
     caption: String,
     date: {
         type: Date,
-        default: Date.new()
+        default: Date.now  // Correct way to set default date
     },
     comment: [{
-        type: mongoose.schema.Types.objectId,
-        ref: 'user'
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'user'  // This should also refer to your User model
     }],
     likes: [{
-        type: mongoose.schema.Types.objectId,
-        ref: 'user'
-    }],
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'user'  // This should refer to your User model
+    }]
+});
 
-
-})
-
-mondule.exports = mongoose.model('post', postSchema)
+module.exports = mongoose.model('post', postSchema);

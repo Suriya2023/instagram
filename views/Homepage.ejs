@@ -35,23 +35,19 @@
     <div class="flex h-screen">
         <!-- Left Sidebar -->
         <div class="hidden md:flex flex-col w-[18rem] border-r border-gray-300 dark:border-gray-800 p-4">
-            <div onclick="window.location.href='/Homepage'" class=" cursor-pointer  py-4">
+            <div onclick="window.location.href='/Homepage',document.getElementById('CreateUploadePost').style.display='none'"
+                class=" cursor-pointer  py-4">
                 <h1 class="text-[3vmin]  font-script">Instagram</h1>
             </div>
 
             <nav class="flex flex-col space-y-4 mt-6">
-                <a href="#" onclick="
-                const main1 = document.querySelector('#mainsidebar');
-                const main2 = document.querySelector('#mainsidebar2');
-                const modal1 = document.querySelector('#none1');
-            
-                // Hide profile
-                modal1.style.display = 'none';
-            
-                // Show both sidebars
-                main1.style.display = '';
-                main2.style.display = '';
-            " class="flex items-center space-x-3 p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800">
+                <a href="javascript:void(0);" onclick="document.getElementById('CreateUploadePost').style.display='none'; 
+            document.getElementById('none').style.display=''; 
+            document.getElementById('mainsidebar2').style.display=''; 
+            document.getElementById('noneedit').style.display=''; 
+            document.getElementById('none1').style.display=''; 
+            document.getElementById('mainsidebar').style.display='';"
+                    class="flex items-center space-x-3 p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800">
                     <i class="fas fa-home text-xl"></i>
                     <span class="font-medium">Home</span>
                 </a>
@@ -92,29 +88,8 @@
                 </a>
 
 
-                <a onclick="
-    const main1 = document.querySelector('#mainsidebar');
-    const main2 = document.querySelector('#mainsidebar2');
-    const modal1 = document.querySelector('#none1');
-    const modal2 = document.querySelector('#noneedit'); // Yeh naya element hai
-
-    if (modal1.style.display === 'none' || modal1.style.display === '') {
-        // Show Profile
-        modal1.style.display = 'block';
-        if (modal2) modal2.style.display = 'none'; // Yeh line add ki gayi hai
-
-        // Hide sidebars
-        main1.style.display = 'none';
-        main2.style.display = 'none';
-    } else {
-        // Hide Profile
-        modal1.style.display = 'none';
-
-        // Show sidebars
-        main1.style.display = '';
-        main2.style.display = '';
-    }
-" class="flex cursor-pointer items-center space-x-3 p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800">
+                <a onclick="toggleProfile()"
+                    class="flex cursor-pointer items-center space-x-3 p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800">
                     <i class="far fa-user text-xl"></i>
                     <span class="font-medium">Profile</span>
                 </a>
@@ -381,66 +356,69 @@
 
                 <!-- Posts -->
                 <div class="border border-gray-300 dark:border-gray-800 rounded-md mb-6 bg-white dark:bg-black">
-                    <!-- Post Header -->
-                    <div class="flex items-center justify-between p-3">
-                        <div class="flex items-center space-x-2">
-                            <div class="w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 p-0.5">
-                                <div class="bg-white dark:bg-gray-800 rounded-full p-0.5 w-full h-full">
-                                    <img src="/images/uploads/<%= user.profileimage %>" alt="vindiesel"
-                                        class="rounded-full w-full h-full object-cover" />
+                    <% post.forEach(function(post) { %>
+                        <!-- Post Header -->
+                        <div class="flex items-center justify-between p-3">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 p-0.5">
+                                    <div class="bg-white dark:bg-gray-800 rounded-full p-0.5 w-full h-full">
+                                        <img src="/images/uploads/<%= post.user.profileimage %>" alt="vindiesel"
+                                            class="rounded-full w-full h-full object-cover" />
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class="font-medium text-sm">
+                                        <%= post.user.fullname %>
+                                    </span>
+                                    <span class="text-xs text-gray-500"> • 13h</span>
                                 </div>
                             </div>
-                            <div>
-                                <span class="font-medium text-sm">
-                                    <%= user.fullname %>
-                                </span>
-                                <span class="text-xs text-gray-500"> • 13h</span>
-                            </div>
-                        </div>
-                        <button class="text-gray-700 dark:text-gray-300">
-                            <i class="fas fa-ellipsis-h"></i>
-                        </button>
-                    </div>
-
-                    <!-- Post Image -->
-                    <div class="relative">
-                        <img src="https://i.pinimg.com/736x/54/f6/10/54f610fc07356c059939cb91d305d385.jpg" alt="Post"
-                            class="w-full">
-                        <div class="absolute bottom-4 left-4 bg-gray-800 bg-opacity-60 p-1 rounded-full">
-                            <i class="fas fa-tag text-white"></i>
-                        </div>
-                    </div>
-
-                    <!-- Post Actions -->
-                    <div class="p-3">
-                        <div class="flex justify-between">
-                            <div class="flex space-x-4">
-                                <button id="likeBtn" class="focus:outline-none">
-                                    <i class="far fa-heart text-2xl"></i>
-                                </button>
-                                <button class="focus:outline-none">
-                                    <i class="far fa-comment text-2xl"></i>
-                                </button>
-                                <button class="focus:outline-none">
-                                    <i class="far fa-paper-plane text-2xl"></i>
-                                </button>
-                            </div>
-                            <button class="focus:outline-none">
-                                <i class="far fa-bookmark text-2xl"></i>
+                            <button class="text-gray-700 dark:text-gray-300">
+                                <i class="fas fa-ellipsis-h"></i>
                             </button>
                         </div>
-                        <div class="mt-2">
-                            <p class="font-medium text-sm">1,212,996 likes</p>
-                            <p class="text-sm mt-1">
-                                <span class="font-medium">vindiesel</span> Life of a Toretto...
-                            </p>
-                            <p class="text-sm text-gray-500 mt-1">View all 4,206 comments</p>
-                            <div class="flex items-center mt-2">
-                                <input type="text" placeholder="Add a comment..."
-                                    class="text-sm flex-1 focus:outline-none bg-transparent">
+
+                        <!-- Post Image -->
+                        <div class="relative">
+                            <img src="/images/uploads/<%= post.image %>"
+                                alt="Post" class="w-full">
+                            <div class="absolute bottom-4 left-4 bg-gray-800 bg-opacity-60 p-1 rounded-full">
+                                <i class="fas fa-tag text-white"></i>
                             </div>
                         </div>
-                    </div>
+
+                        <!-- Post Actions -->
+                        <div class="p-3">
+                            <div class="flex justify-between">
+                                <div class="flex space-x-4">
+                                    <button id="likeBtn" class="focus:outline-none">
+                                        <i class="far fa-heart text-2xl"></i>
+                                    </button>
+                                    <button class="focus:outline-none">
+                                        <i class="far fa-comment text-2xl"></i>
+                                    </button>
+                                    <button class="focus:outline-none">
+                                        <i class="far fa-paper-plane text-2xl"></i>
+                                    </button>
+                                </div>
+                                <button class="focus:outline-none">
+                                    <i class="far fa-bookmark text-2xl"></i>
+                                </button>
+                            </div>
+                            <div class="mt-2">
+                                <p class="font-medium text-sm">1,212,996 likes</p>
+                                <p class="text-sm mt-1">
+                                    <span class="font-medium">vindiesel</span> Life of a Toretto...
+                                </p>
+                                <p class="text-sm text-gray-500 mt-1">View all 4,206 comments</p>
+                                <div class="flex items-center mt-2">
+                                    <input type="text" placeholder="Add a comment..."
+                                        class="text-sm flex-1 focus:outline-none bg-transparent">
+                                </div>
+                            </div>
+                        </div>
+                        <% }) %>
+
                 </div>
 
                 <!-- Audio Post Preview -->
@@ -468,36 +446,76 @@
 
         <!-- Create Post Modal -->
         <div id="none" style="display: none;">
-            <div class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
-                <div class="bg-gray-800 rounded-xl w-full max-w-2xl overflow-hidden">
+            <div class="fixed inset-0 flex items-center justify-center z-50 bg-white border border-black bg-opacity-50">
+                <div class="bg-white rounded-xl  border border-black w-full max-w-2xl overflow-hidden">
                     <!-- Modal Header -->
-                    <div class="flex items-center justify-between border-b border-gray-700 p-3">
+                    <div class="flex items-center  justify-between border-b border-gray-700 p-3">
                         <button onclick="document.getElementById('none').style.display = 'none'"
                             class="text-gray-400 hover:text-white">
                             <i class="fas fa-times text-xl"></i>
                         </button>
-                        <h3 class="text-white font-semibold">Create new post</h3>
+                        <h3 class="text-black font-semibold">Create new post</h3>
                         <div class="w-5"></div> <!-- Spacer for center alignment -->
                     </div>
 
-                    <!-- Modal Content -->
-                    <div class="p-6 flex flex-col items-center justify-center h-96 text-center">
-                        <div class="mb-6">
-                            <div class="inline-flex p-5 border-2 border-gray-500 rounded-full">
+                    <!-- First Image Upload   -->
+                    <form action="/create" class="p-6 flex flex-col items-center justify-center h-auto text-center"
+                        method="post" enctype="multipart/form-data">
+
+                        <div class="mb-6"><br>
+                            <div class="inline-flex p-5  rounded-full">
                                 <div class="flex items-center">
-                                    <i class="far fa-image text-3xl mr-2"></i>
-                                    <i class="fas fa-play text-3xl"></i>
+                                    <img id="imagePreviewModal" src=""
+                                        class="border border-black h-32 w-32 object-cover rounded-full"
+                                        alt="Preview image">
                                 </div>
                             </div>
                         </div>
+
                         <p class="text-xl mb-8">Drag photos and videos here</p>
-                        <button class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg">
-                            Select from computer
-                        </button>
-                    </div>
+                        <!-- Hidden file input -->
+                        <input type="file" name="post" id="FileUpload" accept="image/*,video/*"
+                            onchange="previewImage(event)" required class="hidden" />
+
+                        <!-- Trigger button for file input -->
+                        <button type="button" onclick="document.getElementById('FileUpload').click()"
+                            class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg">
+                            Upload Your Post
+                        </button> <br>
+                        <!-- Caption -->
+                        <textarea placeholder="Write a caption..." rows="4"
+                            class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+                            name="caption"></textarea>
+
+
+
+
+
+                        <br>
+
+
+
+                        <!-- Optional: Show upload options -->
+                        <button type="submit" onclick="document.getElementById('CreateUploadePost').style.display='block'; 
+                            document.getElementById('mainsidebar2').style.display='none'; 
+                            document.getElementById('noneedit').style.display='none'; 
+                            document.getElementById('none1').style.display='none'; 
+                            document.getElementById('none').style.display='none'; 
+                            document.getElementById('mainsidebar').style.display='none';"
+                            class="mt-2 bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg">
+                            Share Post
+                        </button><br><br>
+                    </form>
+
+                    <!-- Preview Script -->
+
+
                 </div>
             </div>
+
+
         </div>
+
 
         <!-- profile Content -->
         <div id="none1" style="display: none;width: 50%;" class="container mx-auto px-4 py-6">
@@ -659,14 +677,29 @@
                 </div>
 
                 <!-- Post Grid -->
+                <!-- Post Grid -->
                 <div class="mt-4">
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-1">
-                        <div class="aspect-square">
-                            <img src="https://i.pinimg.com/736x/eb/6c/69/eb6c69f837de193bb83cd8625e3f4baa.jpg"
-                                alt="Post" class="w-full h-full object-cover" />
-                        </div>
+                        <% user.posts.forEach(function(post) { %>
+                            <div class="max-w-sm mx-auto rounded-2xl overflow-hidden shadow-lg ">
+                                <div class=" rounded-xl w-full relative">
+                                    <!-- Developer Image -->
+                                    <img src="/images/uploads/<%= post.image %>" alt="Post"
+                                        class="w-full h-auto object-cover rounded-lg" />
+
+
+                                </div>
+
+                                <!-- Caption -->
+                                <!-- <p class="text-center text-lg font-semibold mt-4">
+                                    Fullstack Developer – Passionate About Modern Web Apps
+                                </p> -->
+                            </div>
+
+                            <% }); %>
                     </div>
                 </div>
+
 
                 <!-- Footer -->
                 <footer class="mt-12 pt-8 pb-4 text-center text-xs text-gray-500">
@@ -1124,6 +1157,47 @@
                 reader.readAsDataURL(file);
             }
         });
+    </script>
+    <script>
+        function previewImage(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const imageSrc = e.target.result;
+                document.getElementById('imagePreviewModal').src = imageSrc;
+                document.getElementById('imagePreviewUpload').src = imageSrc;
+            };
+
+            reader.readAsDataURL(file);
+        }
+    </script>
+
+    <script>
+        function toggleProfile() {
+            const main1 = document.querySelector('#mainsidebar');
+            const main2 = document.querySelector('#mainsidebar2');
+            const modal1 = document.querySelector('#none1');
+            const modal2 = document.querySelector('#noneedit'); // New element
+
+            if (modal1.style.display === 'none' || modal1.style.display === '') {
+                // Show Profile
+                modal1.style.display = 'block';
+                if (modal2) modal2.style.display = 'none'; // Hide other modal if exists
+
+                // Hide sidebars
+                main1.style.display = 'none';
+                main2.style.display = 'none';
+            } else {
+                // Hide Profile
+                modal1.style.display = 'none';
+
+                // Show sidebars
+                main1.style.display = '';
+                main2.style.display = '';
+            }
+        }
     </script>
 
 </body>

@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 let userModel = require('./users')
+let userPost = require('./post')
 let upload = require('./multer');
 
 let passport = require('passport')
@@ -20,9 +21,12 @@ router.get('/signup', function (req, res) {
 router.get('/Homepage', isLoggdeIn, async function (req, res) {
   let user = await userModel.findOne(
     { username: req.session.passport.user }
-  );
 
-  res.render('Homepage', { user });
+  )
+    const post = await userPost.find().populate('user').populate({ path: 'comment', populate: { path: 'user' } })
+  // console.log(user,post)
+
+  res.render('Homepage', { user,post });
 });
 
 
@@ -78,6 +82,20 @@ router.post('/edit', isLoggdeIn, upload.single('post'), async (req, res) => {
 
   res.redirect('/Homepage');
 });
+
+//uploade post
+router.post('/create', isLoggdeIn, upload.single('post'), async (req, res) => {
+  let user = await userModel.findOne({ username: req.session.passport.user })
+  let newPost = new userPost({
+    image: req.file.filename, caption: req.body.caption, user: user._id,
+    likes: user._id,
+    comment: []
+  })
+  await newPost.save()
+  user.posts.push(newPost._id)
+  await user.save()
+  res.redirect('/Homepage')
+})
 
 
 //middel ware
