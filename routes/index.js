@@ -2,13 +2,16 @@ var express = require('express');
 var router = express.Router();
 let userModel = require('./users')
 let userPost = require('./post')
+let userComment = require('./comment')
 let upload = require('./multer');
 
 let passport = require('passport')
-let localstargtegy = require('passport-local')
+let localstargtegy = require('passport-local');
+const { default: mongoose } = require('mongoose');
 
 passport.use(new localstargtegy(userModel.authenticate()))
 /* GET home page. */
+
 router.get('/', function (req, res, next) {
   const error = req.flash("error");
   res.render('index', { error });
@@ -21,16 +24,17 @@ router.get('/signup', function (req, res) {
 router.get('/Homepage', isLoggdeIn, async function (req, res) {
   let user = await userModel.findOne(
     { username: req.session.passport.user }
+  ).populate('posts');
+  let posts = await userPost.find()
+    .populate('user')
+    .populate({
+      path: 'comment', // Populating comment array
+      populate: { path: 'user' } // Populating user inside each comment
+    });
+  console.log(user, posts)
 
-  )
-    const post = await userPost.find().populate('user').populate({ path: 'comment', populate: { path: 'user' } })
-  // console.log(user,post)
-
-  res.render('Homepage', { user,post });
+  res.render('Homepage', { user, posts });
 });
-
-
-
 router.get('/logout', function (req, res) {
   req.logOut(function (e) {
     if (e) {
@@ -46,7 +50,46 @@ router.get('/editprofile', isLoggdeIn, async function (req, res) {
   let user = await userModel.findOne({ username: req.session.passport.user })
   res.render('editprofile', user)
 })
-//post methord
+
+// like post router
+router.get('/like/post/:id', isLoggdeIn, async function (req, res) {
+  const user = await userModel.findOne({ username: req.session.passport.user })
+
+  const post = await userPost.findById(req.params.id)
+  const userId = user._id
+
+  // condition
+  let alreadyLike = post.likes.some(id => id.equals(userId));
+  if (!alreadyLike) {
+    post.likes.push(userId)
+  }
+  else {
+    post.likes = post.likes.filter(id => !id.equals(userId))
+  }
+  console.log("User ID:", user._id);
+  console.log("Post likes:", post.likes);
+  await post.save()
+
+  res.redirect('/Homepage')
+})
+
+//comment post id
+router.post('/post/comment/:id', isLoggdeIn, async function (req, res) {
+  const user = await userModel.findOne({ username: req.session.passport.user });
+  const post = await userPost.findById(req.params.id);
+  const newComment = await userComment.create({
+    user: user._id,
+    post: post._id,
+    comment: req.body.comment
+  })
+  post.comment.push(newComment._id)
+  await post.save()
+  res.redirect('/Homepage')
+
+
+})
+
+//post router  methord
 
 router.post('/register', function (req, res) {
   let UserData = new userModel({

@@ -21,7 +21,7 @@ let userSchema = new mongoose.Schema({
   bio: String,
 
   profileimage: String,
-  password:String,
+  password: String,
 
   posts: [{
     type: mongoose.Schema.Types.ObjectId,

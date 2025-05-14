@@ -14,7 +14,7 @@ let postSchema = new mongoose.Schema({
     },
     comment: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'user'  // This should also refer to your User model
+        ref: 'comment'  // This should also refer to your User model
     }],
     likes: [{
         type: mongoose.Schema.Types.ObjectId,

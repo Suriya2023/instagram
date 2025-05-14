@@ -8,6 +8,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css"
+        integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap');
@@ -355,8 +358,9 @@
                 </div>
 
                 <!-- Posts -->
+
                 <div class="border border-gray-300 dark:border-gray-800 rounded-md mb-6 bg-white dark:bg-black">
-                    <% post.forEach(function(post) { %>
+                    <% posts.reverse().forEach(function(post) { %>
                         <!-- Post Header -->
                         <div class="flex items-center justify-between p-3">
                             <div class="flex items-center space-x-2">
@@ -370,7 +374,9 @@
                                     <span class="font-medium text-sm">
                                         <%= post.user.fullname %>
                                     </span>
-                                    <span class="text-xs text-gray-500"> • 13h</span>
+                                    <span class="text-xs text-gray-500">
+                                        <%= post.date %>
+                                    </span>
                                 </div>
                             </div>
                             <button class="text-gray-700 dark:text-gray-300">
@@ -380,8 +386,7 @@
 
                         <!-- Post Image -->
                         <div class="relative">
-                            <img src="/images/uploads/<%= post.image %>"
-                                alt="Post" class="w-full">
+                            <img src="/images/uploads/<%= post.image %>" alt="Post" class="w-full">
                             <div class="absolute bottom-4 left-4 bg-gray-800 bg-opacity-60 p-1 rounded-full">
                                 <i class="fas fa-tag text-white"></i>
                             </div>
@@ -391,34 +396,83 @@
                         <div class="p-3">
                             <div class="flex justify-between">
                                 <div class="flex space-x-4">
-                                    <button id="likeBtn" class="focus:outline-none">
-                                        <i class="far fa-heart text-2xl"></i>
+                                    <a href="/like/post/<%= post._id %>">
+                                        <% if(post.likes.map(like=> like.toString()).includes(user._id.toString())) { %>
+                                            <i class="ri-heart-3-fill text-red-600 text-2xl"></i>
+                                            <% } else { %>
+                                                <i class="ri-heart-3-line text-2xl"></i>
+                                                <% } %>
+                                    </a>
+
+                                    <!-- Button with inline script -->
+                                    <button class="focus:outline-none"
+                                        onclick="document.getElementById('commentInput-<%= post._id %>').focus();">
+                                        <i class="ri-chat-1-line text-2xl"></i>
                                     </button>
-                                    <button class="focus:outline-none">
-                                        <i class="far fa-comment text-2xl"></i>
-                                    </button>
+
                                     <button class="focus:outline-none">
                                         <i class="far fa-paper-plane text-2xl"></i>
                                     </button>
                                 </div>
+
                                 <button class="focus:outline-none">
                                     <i class="far fa-bookmark text-2xl"></i>
                                 </button>
                             </div>
                             <div class="mt-2">
-                                <p class="font-medium text-sm">1,212,996 likes</p>
                                 <p class="text-sm mt-1">
-                                    <span class="font-medium">vindiesel</span> Life of a Toretto...
+                                    <span class="font-medium">
+                                        <%= post.user.username %>
+                                    </span>
+                                    <%= post.caption %>
                                 </p>
-                                <p class="text-sm text-gray-500 mt-1">View all 4,206 comments</p>
+
+                                <!-- Like count -->
+                                <p class="text-sm text-gray-500 mt-1">View all <%= post.likes.length %> likes</p>
+
+                                <!-- Comment input form -->
+                                <!-- Comment count -->
+                                <p class="text-sm text-gray-500 mt-1">
+                                    <a onclick="var commentsSection = document.getElementById('comments-section-<%= post._id %>'); 
+                                commentsSection.style.display = (commentsSection.style.display === 'none') ? 'block' : 'none';"
+                                        class="text-blue-500 cursor-pointer">
+                                        View all <%= post.comment.length %> comments
+                                    </a>
+                                </p>
+
+                                <!-- Display Comments (Initially Hidden) -->
+                                <div class="mt-2" id="comments-section-<%= post._id %>" style="display: none;">
+                                    <% post.comment.forEach(comment=> { %>
+                                        <div class="flex items-start mb-2">
+                                            <img src="/images/uploads/<%= comment.user.profileimage %>"
+                                                class="w-8 h-8 rounded-full mr-2" alt="Profile Image">
+                                            <div>
+                                                <p class="font-medium">
+                                                    <%= comment.user.username %>
+                                                </p>
+                                                <p class="text-sm text-gray-700">
+                                                    <%= comment.comment %>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <% }) %>
+                                </div>
+
+                                <!-- Comment Input Form -->
                                 <div class="flex items-center mt-2">
-                                    <input type="text" placeholder="Add a comment..."
-                                        class="text-sm flex-1 focus:outline-none bg-transparent">
+                                    <form action="/post/comment/<%= post._id %>" method="POST" class="flex w-full">
+                                        <input id="commentInput-<%= post._id %>" name="comment" type="text"
+                                            placeholder="Add a comment..."
+                                            class="text-sm flex-1 focus:outline-none bg-transparent border-b border-gray-300" />
+
+                                        <button type="submit" class="ml-2 text-blue-500">
+                                            <i class="ri-send-plane-line text-xl"></i>
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                         <% }) %>
-
                 </div>
 
                 <!-- Audio Post Preview -->
@@ -680,11 +734,11 @@
                 <!-- Post Grid -->
                 <div class="mt-4">
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-1">
-                        <% user.posts.forEach(function(post) { %>
+                        <% user.posts.forEach(function(p) { %>
                             <div class="max-w-sm mx-auto rounded-2xl overflow-hidden shadow-lg ">
                                 <div class=" rounded-xl w-full relative">
                                     <!-- Developer Image -->
-                                    <img src="/images/uploads/<%= post.image %>" alt="Post"
+                                    <img src="/images/uploads/<%= p.image %>" alt="Post"
                                         class="w-full h-auto object-cover rounded-lg" />
 
 
@@ -883,7 +937,7 @@
 
                             <div class="mb-6">
                                 <label class="block font-semibold mb-2">FullName</label>
-                                <input type="text" name="1" placeholder="<%= user.fullname %>"
+                                <input type="text" name="fullname" placeholder="<%= user.fullname %>"
                                     class="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50">
                             </div>
 
@@ -1109,19 +1163,7 @@
     </div>
 
     <script>
-        // Simple like button functionality
-        document.getElementById('likeBtn').addEventListener('click', function () {
-            const icon = this.querySelector('i');
-            if (icon.classList.contains('far')) {
-                icon.classList.remove('far');
-                icon.classList.add('fas');
-                icon.classList.add('text-red-500');
-            } else {
-                icon.classList.remove('fas');
-                icon.classList.remove('text-red-500');
-                icon.classList.add('far');
-            }
-        });
+
 
         const menuButton = document.getElementById('menuButton');
         const dropdownMenu = document.getElementById('dropdownMenu');
